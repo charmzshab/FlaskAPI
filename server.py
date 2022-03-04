@@ -96,26 +96,26 @@ def get_all_users_ascending():
     return jsonify(all_users_ll.to_list()), 200
 
 
-# @app.route("/user/<user_id>", methods=["GET"])
-# def get_one_user(user_id):
-#     users = User.query.all()
+@app.route("/user/<user_id>", methods=["GET"])
+def get_one_user(user_id):
+    users = User.query.all()
 
-#     all_users_ll = linked_list.LinkedList()
+    all_users_ll = linked_list.LinkedList()
 
-#     for user in users:
-#         all_users_ll.insert_beginning(
-#             {
-#                 "id": user.id,
-#                 "name": user.name,
-#                 "email": user.email,
-#                 "address": user.address,
-#                 "phone": user.phone,
-#             }
-#         )
+    for user in users:
+        all_users_ll.insert_beginning(
+            {
+                "id": user.id,
+                "name": user.name,
+                "email": user.email,
+                "address": user.address,
+                "phone": user.phone,
+            }
+        )
 
-#     user = all_users_ll.get_user_by_id(user_id)
+    user = all_users_ll.get_user_by_id(user_id)
 
-#     return jsonify(user), 200
+    return jsonify(user), 200
 
 
 # @app.route("/user/<user_id>", methods=["DELETE"])
